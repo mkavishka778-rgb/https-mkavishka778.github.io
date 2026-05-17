@@ -1193,7 +1193,7 @@ document.getElementById('downloadCV').addEventListener('click', (e) => {
   const cvText = `KAVISHKA MADHUSHAN\n==================\nLocation: Meegoda, Sri Lanka\nPhone: +94 75 521 0975\nEmail: mkavishka778@gmail.com\n\nPROFILE\n-------\nA motivated and detail-oriented individual with practical experience in graphic design, human resource management, and animal clinic support work.\n\nSKILLS\n------\n- Graphic Design\n- Creating Web Pages\n- Drawing & Digital Arts\n- Team Work\n- Good Communication\n- Time Management\n- HRM Knowledge\n- Digital Content Creation\n- AI & Technology Learning\n\nEDUCATION\n---------\nDiploma in Human Resource Management (Dip.HRM) - IHRM Institute, 2024\nG.C.E Advanced Level - 2025 (1B, 2C)\nG.C.E Ordinary Level - 2025 (1A, 2B, 4C, 2S)\nSri Paraksrama Maha Vidyalaya\nHabarakada Kanishta Vidyalaya\n\nEXPERIENCE\n----------\nVeterinary Clinic Support Worker - Heal Zone Animal Clinic, 2024\nStudent Worker - IHRM Institute, 2024 (In Course)\n\nCERTIFICATIONS\n--------------\nCCHRM - Certificate in Core HRM (2023)\nDiploma in HRM (2024)\nICT with AI - Ongoing\n\nLANGUAGES\n---------\nSinhala (Native)\nEnglish (Professional)`;
   const blob = new Blob([cvText], { type: 'text/plain' });
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href = url; a.download = 'Kavishka_Madhushan_CV.txt';
+  const a = document.createElement('a'); a.href = url; a.download = 'Kavishka_Madhusahn_CV.pdf';
   a.click(); URL.revokeObjectURL(url);
 });
 
