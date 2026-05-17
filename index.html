@@ -56,15 +56,12 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: #f0f0f8; 
 @media (max-width: 768px) { .cursor-dot, .cursor-ring { display: none !important; } body { cursor: auto; } }
 
 #particles { position: fixed; inset: 0; z-index: 0; }
-
-/* ── SECOND PARTICLE LAYER ── */
 #particles2 { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 
 .blob { position: fixed; border-radius: 50%; filter: blur(100px); opacity: 0.15; pointer-events: none; z-index: 0; }
 .blob-1 { width: 500px; height: 500px; background: var(--accent); top: -100px; left: -100px; animation: blobFloat1 20s ease-in-out infinite; }
 .blob-2 { width: 400px; height: 400px; background: var(--accent2); bottom: -50px; right: -100px; animation: blobFloat2 25s ease-in-out infinite; }
 .blob-3 { width: 350px; height: 350px; background: var(--accent3); top: 50%; left: 50%; animation: blobFloat3 22s ease-in-out infinite; }
-/* extra blobs for richer feel */
 .blob-4 { width: 280px; height: 280px; background: #c084fc; top: 30%; right: 10%; animation: blobFloat2 18s ease-in-out 4s infinite; opacity: 0.10; }
 .blob-5 { width: 320px; height: 320px; background: var(--accent); bottom: 20%; left: 5%; animation: blobFloat1 24s ease-in-out 7s infinite; opacity: 0.08; }
 @keyframes blobFloat1 { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(100px,80px) scale(1.1); } 66% { transform: translate(-50px,120px) scale(0.9); } }
@@ -140,200 +137,38 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: #f0f0f8; 
 #mobile-menu a { font-size: 1.25rem; color: #f0f0f8; font-weight: 500; transition: color 0.3s; }
 #mobile-menu a:hover { color: var(--accent); }
 
-/* ══════════════════════════════════════════════
-   FLIP CARD CAROUSEL
-══════════════════════════════════════════════ */
-.carousel-wrapper {
-  position: relative;
-  overflow: hidden;
-  padding: 1rem 0 2rem;
-}
-.carousel-track {
-  display: flex;
-  gap: 1.25rem;
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: transform;
-}
+/* ══ FLIP CARD CAROUSEL ══ */
+.carousel-wrapper { position: relative; overflow: hidden; padding: 1rem 0 2rem; }
+.carousel-track { display: flex; gap: 1.25rem; transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); will-change: transform; }
 
-/* Flip card */
-.flip-card {
-  flex: 0 0 260px;
-  height: 340px;
-  perspective: 1200px;
-  cursor: none;
-}
-@media (max-width: 640px) {
-  .flip-card { flex: 0 0 220px; height: 300px; }
-}
-.flip-card-inner {
-  width: 100%; height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
-  border-radius: 20px;
-}
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-.flip-card-front,
-.flip-card-back {
-  position: absolute; inset: 0;
-  border-radius: 20px;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  overflow: hidden;
-}
-/* FRONT – image */
-.flip-card-front {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.07);
-}
-.flip-card-front img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-  display: block;
-}
-.flip-card-front .front-label {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 1.25rem 1rem 1rem;
-  background: linear-gradient(to top, rgba(6,6,18,0.95) 0%, transparent 100%);
-}
-.flip-card-front .front-label h4 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #f0f0f8;
-  margin-bottom: 0.2rem;
-}
-.flip-card-front .front-label span {
-  font-size: 0.7rem;
-  color: var(--accent);
-  font-weight: 500;
-}
-/* hover hint */
-.flip-card-front .hover-hint {
-  position: absolute;
-  top: 10px; right: 10px;
-  background: rgba(0,212,255,0.15);
-  border: 1px solid rgba(0,212,255,0.25);
-  border-radius: 8px;
-  padding: 4px 8px;
-  font-size: 0.62rem;
-  color: var(--accent);
-  letter-spacing: 0.04em;
-  backdrop-filter: blur(6px);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
+.flip-card { flex: 0 0 260px; height: 340px; perspective: 1200px; cursor: none; }
+@media (max-width: 640px) { .flip-card { flex: 0 0 220px; height: 300px; } }
+.flip-card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1); border-radius: 20px; }
+.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back { position: absolute; inset: 0; border-radius: 20px; backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden; }
+.flip-card-front { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); }
+.flip-card-front img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
+.flip-card-front .front-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1rem 1rem; background: linear-gradient(to top, rgba(6,6,18,0.95) 0%, transparent 100%); }
+.flip-card-front .front-label h4 { font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 600; color: #f0f0f8; margin-bottom: 0.2rem; }
+.flip-card-front .front-label span { font-size: 0.7rem; color: var(--accent); font-weight: 500; }
+.flip-card-front .hover-hint { position: absolute; top: 10px; right: 10px; background: rgba(0,212,255,0.15); border: 1px solid rgba(0,212,255,0.25); border-radius: 8px; padding: 4px 8px; font-size: 0.62rem; color: var(--accent); letter-spacing: 0.04em; backdrop-filter: blur(6px); display: flex; align-items: center; gap: 4px; opacity: 0; transition: opacity 0.3s; }
 .flip-card:hover .hover-hint { opacity: 0; }
 .flip-card .hover-hint { opacity: 1; }
+.flip-card-back { transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.08); }
+.flip-card-back .back-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.2rem; }
+.flip-card-back h4 { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: #f0f0f8; margin-bottom: 0.35rem; line-height: 1.3; }
+.flip-card-back .back-subtitle { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.flip-card-back p { font-size: 0.78rem; color: #8888aa; line-height: 1.6; margin-bottom: 1rem; }
+.flip-card-back .back-badge { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.68rem; font-weight: 600; padding: 4px 10px; border-radius: 8px; width: fit-content; }
+.flip-card-back .back-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem; }
+.flip-card-back .back-tag { font-size: 0.63rem; padding: 3px 8px; border-radius: 6px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: #8888aa; }
 
-/* BACK – details */
-.flip-card-back {
-  transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1.5rem;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-.flip-card-back .back-icon {
-  width: 48px; height: 48px;
-  border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-}
-.flip-card-back h4 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #f0f0f8;
-  margin-bottom: 0.35rem;
-  line-height: 1.3;
-}
-.flip-card-back .back-subtitle {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
-}
-.flip-card-back p {
-  font-size: 0.78rem;
-  color: #8888aa;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-.flip-card-back .back-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.68rem;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 8px;
-  width: fit-content;
-}
-.flip-card-back .back-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  margin-top: 0.5rem;
-}
-.flip-card-back .back-tag {
-  font-size: 0.63rem;
-  padding: 3px 8px;
-  border-radius: 6px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  color: #8888aa;
-}
-
-/* Carousel navigation */
-.carousel-btn {
-  width: 42px; height: 42px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  color: #f0f0f8;
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.3s;
-  cursor: none;
-  flex-shrink: 0;
-}
-.carousel-btn:hover {
-  background: rgba(0,212,255,0.12);
-  border-color: rgba(0,212,255,0.3);
-  color: var(--accent);
-  box-shadow: var(--glow);
-}
-.carousel-btn:disabled {
-  opacity: 0.25;
-  pointer-events: none;
-}
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 1.25rem;
-}
-.carousel-dot {
-  width: 6px; height: 6px;
-  border-radius: 3px;
-  background: rgba(255,255,255,0.15);
-  transition: all 0.3s;
-  cursor: none;
-}
-.carousel-dot.active {
-  width: 20px;
-  background: var(--accent);
-}
+.carousel-btn { width: 42px; height: 42px; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: #f0f0f8; display: flex; align-items: center; justify-content: center; transition: all 0.3s; cursor: none; flex-shrink: 0; }
+.carousel-btn:hover { background: rgba(0,212,255,0.12); border-color: rgba(0,212,255,0.3); color: var(--accent); box-shadow: var(--glow); }
+.carousel-btn:disabled { opacity: 0.25; pointer-events: none; }
+.carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 1.25rem; }
+.carousel-dot { width: 6px; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.15); transition: all 0.3s; cursor: none; }
+.carousel-dot.active { width: 20px; background: var(--accent); }
 </style>
 </head>
 <body class="font-inter antialiased">
@@ -633,8 +468,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: #f0f0f8; 
         <p class="text-accent-cyan text-sm font-semibold tracking-widest uppercase mb-2 reveal">Certifications</p>
         <h2 class="section-title gradient-text reveal">Credentials</h2>
       </div>
-
-      <!-- original 3 cert cards -->
       <div class="grid sm:grid-cols-3 gap-5 mb-16">
         <div class="glass p-6 text-center tilt-card reveal float" style="transition-delay:0.05s;">
           <div class="tilt-card-inner">
@@ -668,7 +501,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: #f0f0f8; 
         </div>
       </div>
 
-      <!-- ── FLIP CARD IMAGE CAROUSEL ── -->
+      <!-- FLIP CARD CAROUSEL -->
       <div class="reveal">
         <div class="flex items-center justify-between mb-6">
           <div>
@@ -680,15 +513,11 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: #f0f0f8; 
             <button class="carousel-btn" id="nextBtn" aria-label="Next"><i class="fas fa-chevron-right text-sm"></i></button>
           </div>
         </div>
-
         <div class="carousel-wrapper">
           <div class="carousel-track" id="carouselTrack"></div>
         </div>
-
         <div class="carousel-dots" id="carouselDots"></div>
       </div>
-      <!-- ── END CAROUSEL ── -->
-
     </div>
   </section>
 
@@ -828,141 +657,68 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: #f0f0f8; 
 
 <footer class="relative z-10 border-t border-white/[0.04] py-8 px-6">
   <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-    <p class="text-txt-muted text-sm"> Kavishka Madhushan. All rights reserved.</p>
+    <p class="text-txt-muted text-sm">&copy; Kavishka Madhushan. All rights reserved.</p>
     <p class="text-txt-muted text-xs">Crafted with <span class="text-accent-cyan">passion</span> and <span class="text-accent-purple">precision</span></p>
   </div>
 </footer>
 
 <script>
-/* ─────────────────────────────────────────────
-   FLIP CARD DATA
-   Replace img values with your actual image paths
-───────────────────────────────────────────── */
+/* ── CAROUSEL DATA ── */
 const carouselCards = [
-
   {
-    img: 'MY Certificate (1)_page-0001.jpg',
-    label: 'Dip in HRM',
-    labelTag: '2024',
-    icon: 'fa-award',
-    iconBg: 'rgba(79,124,255,0.12)',
-    iconColor: '#4f7cff',
+    img: 'MY Certificate (1)_page-0001.jpg', label: 'Dip in HRM', labelTag: '2024',
+    icon: 'fa-award', iconBg: 'rgba(79,124,255,0.12)', iconColor: '#4f7cff',
     backBg: 'linear-gradient(135deg,rgba(79,124,255,0.08),rgba(6,6,18,0.98))',
-    accentColor: '#4f7cff',
-    title: 'DHRM',
-    subtitle: 'IHRM Institute',
-    subtitleColor: '#4f7cff',
+    title: 'DHRM', subtitle: 'IHRM Institute', subtitleColor: '#4f7cff',
     desc: 'Diploma Course in Human Resource Management. Covered core 8 subjects.',
-    badgeBg: 'rgba(79,124,255,0.1)',
-    badgeColor: '#4f7cff',
-    badgeText: '2024',
-    tags: ['HRM','Law',]
+    badgeBg: 'rgba(79,124,255,0.1)', badgeColor: '#4f7cff', badgeText: '2024', tags: ['HRM','Law']
   },
-  
   {
-    img: 'MY Certificate (1)_page-0002.jpg',
-    label: 'CCHRM Certificate',
-    labelTag: '2023',
-    icon: 'fa-award',
-    iconBg: 'rgba(79,124,255,0.12)',
-    iconColor: '#4f7cff',
+    img: 'MY Certificate (1)_page-0002.jpg', label: 'CCHRM Certificate', labelTag: '2023',
+    icon: 'fa-award', iconBg: 'rgba(79,124,255,0.12)', iconColor: '#4f7cff',
     backBg: 'linear-gradient(135deg,rgba(79,124,255,0.08),rgba(6,6,18,0.98))',
-    accentColor: '#4f7cff',
-    title: 'CCHRM Certification',
-    subtitle: 'IHRM Institute',
-    subtitleColor: '#4f7cff',
-    desc: 'Certificate Course in Human Resource Management. Covered core 4 subjects',
-    badgeBg: 'rgba(79,124,255,0.1)',
-    badgeColor: '#4f7cff',
-    badgeText: '2023',
-    tags: ['HRM','OB','MIS','PM']
+    title: 'CCHRM Certification', subtitle: 'IHRM Institute', subtitleColor: '#4f7cff',
+    desc: 'Certificate Course in Human Resource Management. Covered core 4 subjects.',
+    badgeBg: 'rgba(79,124,255,0.1)', badgeColor: '#4f7cff', badgeText: '2023', tags: ['HRM','OB','MIS','PM']
   },
-  
   {
-    img: 'MY Certificate (1)_page-0007.jpg',
-    label: 'Zonal ICT Competition',
-    labelTag: '2018',
-    icon: 'fa-award',
-    iconBg: 'rgba(79,124,255,0.12)',
-    iconColor: '#4f7cff',
+    img: 'MY Certificate (1)_page-0007.jpg', label: 'Zonal ICT Competition', labelTag: '2018',
+    icon: 'fa-award', iconBg: 'rgba(79,124,255,0.12)', iconColor: '#4f7cff',
     backBg: 'linear-gradient(135deg,rgba(79,124,255,0.08),rgba(6,6,18,0.98))',
-    accentColor: '#4f7cff',
-    title: 'ICT Competition- 2018',
-    subtitle: 'Habarakada Kanishta Vidyalaya',
-    subtitleColor: '#4f7cff',
-    desc: 'Participated in greade 7 | world proccessing - Zonal Level.',
-    badgeBg: 'rgba(79,124,255,0.1)',
-    badgeColor: '#4f7cff',
-    badgeText: '2018',
-    tags: ['word']
+    title: 'ICT Competition - 2018', subtitle: 'Habarakada Kanishta Vidyalaya', subtitleColor: '#4f7cff',
+    desc: 'Participated in Grade 7 | Word Processing - Zonal Level.',
+    badgeBg: 'rgba(79,124,255,0.1)', badgeColor: '#4f7cff', badgeText: '2018', tags: ['Word']
   },
-  
   {
-    img: 'MY Certificate (1)_page-0004.jpg',
-    label: 'Exam Result sheet',
-    labelTag: '2016',
-    icon: 'fa-award',
-    iconBg: 'rgba(79,124,255,0.12)',
-    iconColor: '#4f7cff',
+    img: 'MY Certificate (1)_page-0004.jpg', label: 'Exam Result Sheet', labelTag: '2016',
+    icon: 'fa-award', iconBg: 'rgba(79,124,255,0.12)', iconColor: '#4f7cff',
     backBg: 'linear-gradient(135deg,rgba(79,124,255,0.08),rgba(6,6,18,0.98))',
-    accentColor: '#4f7cff',
-    title: 'Exam Result sheet',
-    subtitle: 'London English College',
-    subtitleColor: '#4f7cff',
-    desc: 'Successfully passed B lower and B 2 examinations with honor passes.',
-    badgeBg: 'rgba(79,124,255,0.1)',
-    badgeColor: '#4f7cff',
-    badgeText: '2016',
-    tags: ['Speech','Reading','Grammar']
+    title: 'Exam Result Sheet', subtitle: 'London English College', subtitleColor: '#4f7cff',
+    desc: 'Successfully passed B Lower and B2 examinations with honour passes.',
+    badgeBg: 'rgba(79,124,255,0.1)', badgeColor: '#4f7cff', badgeText: '2016', tags: ['Speech','Reading','Grammar']
   },
-  
   {
-    img: 'MY Certificate (1)_page-0011.jpg',
-    label: 'Exam Result sheet',
-    labelTag: '2012',
-    icon: 'fa-award',
-    iconBg: 'rgba(79,124,255,0.12)',
-    iconColor: '#4f7cff',
+    img: 'MY Certificate (1)_page-0011.jpg', label: 'Exam Result Sheet', labelTag: '2012',
+    icon: 'fa-award', iconBg: 'rgba(79,124,255,0.12)', iconColor: '#4f7cff',
     backBg: 'linear-gradient(135deg,rgba(79,124,255,0.08),rgba(6,6,18,0.98))',
-    accentColor: '#4f7cff',
-    title: 'Exam Result sheet',
-    subtitle: 'London English College',
-    subtitleColor: '#4f7cff',
-    desc: 'Successfully passed B-1 lower examinations with honor passes.',
-    badgeBg: 'rgba(79,124,255,0.1)',
-    badgeColor: '#4f7cff',
-    badgeText: '2012',
-    tags: ['Speech','Reading','Grammar']
+    title: 'Exam Result Sheet', subtitle: 'London English College', subtitleColor: '#4f7cff',
+    desc: 'Successfully passed B1 Lower examinations with honour passes.',
+    badgeBg: 'rgba(79,124,255,0.1)', badgeColor: '#4f7cff', badgeText: '2012', tags: ['Speech','Reading','Grammar']
   },
-  
   {
-    img: 'MY Certificate (1)_page-0014.jpg',
-    label: 'Dahampasal Exam',
-    labelTag: '2019',
-    icon: 'fa-award',
-    iconBg: 'rgba(79,124,255,0.12)',
-    iconColor: '#4f7cff',
+    img: 'MY Certificate (1)_page-0014.jpg', label: 'Dahampasal Exam', labelTag: '2019',
+    icon: 'fa-award', iconBg: 'rgba(79,124,255,0.12)', iconColor: '#4f7cff',
     backBg: 'linear-gradient(135deg,rgba(79,124,255,0.08),rgba(6,6,18,0.98))',
-    accentColor: '#4f7cff',
-    title: 'Exam Result sheet',
-    subtitle: 'Sri Rathanasara Dahampasala-Godagama',
-    subtitleColor: '#4f7cff',
-    desc: 'Successfully sat and pass the exam.',
-    badgeBg: 'rgba(79,124,255,0.1)',
-    badgeColor: '#4f7cff',
-    badgeText: '2019',
-    tags: ['Grade 8']
+    title: 'Exam Result Sheet', subtitle: 'Sri Rathanasara Dahampasala - Godagama', subtitleColor: '#4f7cff',
+    desc: 'Successfully sat and passed the examination.',
+    badgeBg: 'rgba(79,124,255,0.1)', badgeColor: '#4f7cff', badgeText: '2019', tags: ['Grade 8']
   }
-  
-  
-  
 ];
 
-/* Build carousel */
+/* ── CAROUSEL BUILD ── */
 const track = document.getElementById('carouselTrack');
 const dotsContainer = document.getElementById('carouselDots');
 let currentIndex = 0;
-let cardWidth = 260 + 20; // flex item width + gap
 
 function getVisibleCount() {
   const w = window.innerWidth;
@@ -976,39 +732,28 @@ function buildCards() {
   track.innerHTML = '';
   dotsContainer.innerHTML = '';
   const totalDots = Math.ceil(carouselCards.length / Math.floor(getVisibleCount()));
-
-  carouselCards.forEach((c, i) => {
+  carouselCards.forEach((c) => {
     track.innerHTML += `
       <div class="flip-card">
         <div class="flip-card-inner">
-          <!-- FRONT -->
           <div class="flip-card-front">
             <img src="${c.img}" alt="${c.label}" loading="lazy">
             <div class="hover-hint"><i class="fas fa-rotate" style="font-size:0.6rem;"></i> Hover</div>
-            <div class="front-label">
-              <h4>${c.label}</h4>
-              <span>${c.labelTag}</span>
-            </div>
+            <div class="front-label"><h4>${c.label}</h4><span>${c.labelTag}</span></div>
           </div>
-          <!-- BACK -->
           <div class="flip-card-back" style="background:${c.backBg};">
-            <div class="back-icon" style="background:${c.iconBg};">
-              <i class="fas ${c.icon}" style="color:${c.iconColor};"></i>
-            </div>
+            <div class="back-icon" style="background:${c.iconBg};"><i class="fas ${c.icon}" style="color:${c.iconColor};"></i></div>
             <h4>${c.title}</h4>
             <div class="back-subtitle" style="color:${c.subtitleColor};">${c.subtitle}</div>
             <p>${c.desc}</p>
             <div class="back-badge" style="background:${c.badgeBg};color:${c.badgeColor};border:1px solid ${c.badgeColor}33;">
               <i class="fas fa-circle-check" style="font-size:0.6rem;"></i>${c.badgeText}
             </div>
-            <div class="back-tags">
-              ${c.tags.map(t => `<span class="back-tag">${t}</span>`).join('')}
-            </div>
+            <div class="back-tags">${c.tags.map(t=>`<span class="back-tag">${t}</span>`).join('')}</div>
           </div>
         </div>
       </div>`;
   });
-
   for (let d = 0; d < totalDots; d++) {
     const dot = document.createElement('button');
     dot.className = 'carousel-dot' + (d === 0 ? ' active' : '');
@@ -1033,24 +778,22 @@ function goTo(idx) {
 
 buildCards();
 goTo(0);
-
 document.getElementById('prevBtn').addEventListener('click', () => goTo(currentIndex - 1));
 document.getElementById('nextBtn').addEventListener('click', () => goTo(currentIndex + 1));
 window.addEventListener('resize', () => { buildCards(); goTo(0); });
 
-/* ─────────────────────────────
-   SKILLS DATA
-───────────────────────────── */
+/* ── SKILLS DATA ── */
 const skillsData = [
-  { name: 'Graphic Design', icon: 'fa-palette', color: '#00d4ff', percent: 90 },
-  { name: 'Creating Web Pages', icon: 'fa-code', color: '#4f7cff', percent: 70 },
-  { name: 'Drawing & Digital Arts', icon: 'fa-pen-nib', color: '#8b5cf6', percent: 85 },
-  { name: 'Team Work', icon: 'fa-people-group', color: '#c084fc', percent: 90 },
-  { name: 'Good Communication', icon: 'fa-comments', color: '#00d4ff', percent: 75 },
-  { name: 'Time Management', icon: 'fa-clock', color: '#4f7cff', percent: 90 },
-  { name: 'AI & Technology Learning', icon: 'fa-robot', color: '#00d4ff', percent: 65 }
+  { name: 'Graphic Design',        icon: 'fa-palette',      color: '#00d4ff', percent: 90 },
+  { name: 'Creating Web Pages',    icon: 'fa-code',          color: '#4f7cff', percent: 70 },
+  { name: 'Drawing & Digital Arts',icon: 'fa-pen-nib',       color: '#8b5cf6', percent: 85 },
+  { name: 'Team Work',             icon: 'fa-people-group',  color: '#c084fc', percent: 90 },
+  { name: 'Good Communication',    icon: 'fa-comments',      color: '#00d4ff', percent: 75 },
+  { name: 'Time Management',       icon: 'fa-clock',         color: '#4f7cff', percent: 90 },
+  { name: 'AI & Technology',       icon: 'fa-robot',         color: '#00d4ff', percent: 65 }
 ];
 
+/* ── LOADER ── */
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loader').classList.add('hidden');
@@ -1058,15 +801,15 @@ window.addEventListener('load', () => {
   }, 1200);
 });
 
-/* CURSOR */
-const cursorDot = document.getElementById('cursorDot');
+/* ── CURSOR ── */
+const cursorDot  = document.getElementById('cursorDot');
 const cursorRing = document.getElementById('cursorRing');
 let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
 document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX; mouseY = e.clientY;
   cursorDot.style.left = mouseX + 'px'; cursorDot.style.top = mouseY + 'px';
-  const ml = document.getElementById('mouse-light');
-  ml.style.left = mouseX + 'px'; ml.style.top = mouseY + 'px';
+  document.getElementById('mouse-light').style.left = mouseX + 'px';
+  document.getElementById('mouse-light').style.top  = mouseY + 'px';
 });
 function animateCursorRing() {
   ringX += (mouseX - ringX) * 0.15; ringY += (mouseY - ringY) * 0.15;
@@ -1075,27 +818,22 @@ function animateCursorRing() {
 }
 animateCursorRing();
 document.addEventListener('mouseover', (e) => {
-  if (e.target.closest('a, button, input, textarea, .social-icon, .btn-glow, .btn-whatsapp, .tilt-card, .flip-card, .carousel-btn')) {
+  if (e.target.closest('a,button,input,textarea,.social-icon,.btn-glow,.btn-whatsapp,.tilt-card,.flip-card,.carousel-btn')) {
     cursorDot.classList.add('hover'); cursorRing.classList.add('hover');
   }
 });
 document.addEventListener('mouseout', (e) => {
-  if (e.target.closest('a, button, input, textarea, .social-icon, .btn-glow, .btn-whatsapp, .tilt-card, .flip-card, .carousel-btn')) {
+  if (e.target.closest('a,button,input,textarea,.social-icon,.btn-glow,.btn-whatsapp,.tilt-card,.flip-card,.carousel-btn')) {
     cursorDot.classList.remove('hover'); cursorRing.classList.remove('hover');
   }
 });
 
-/* ─────────────────────────────
-   PARTICLES — primary layer
-───────────────────────────── */
+/* ── PARTICLES ── */
 tsParticles.load("particles", {
-  fullScreen: false,
-  background: { color: 'transparent' },
-  fpsLimit: 60,
+  fullScreen: false, background: { color: 'transparent' }, fpsLimit: 60,
   particles: {
     number: { value: 100, density: { enable: true, area: 800 } },
-    color: { value: ['#00d4ff', '#4f7cff', '#8b5cf6'] },
-    shape: { type: 'circle' },
+    color: { value: ['#00d4ff','#4f7cff','#8b5cf6'] }, shape: { type: 'circle' },
     opacity: { value: { min: 0.08, max: 0.45 }, animation: { enable: true, speed: 0.6, minimumValue: 0.05 } },
     size: { value: { min: 1, max: 2.8 } },
     move: { enable: true, speed: 0.7, direction: 'none', random: true, straight: false, outModes: 'out' },
@@ -1103,23 +841,15 @@ tsParticles.load("particles", {
   },
   interactivity: {
     events: { onHover: { enable: true, mode: 'grab' }, onClick: { enable: true, mode: 'push' } },
-    modes: {
-      grab: { distance: 200, links: { opacity: 0.22, color: '#00d4ff' } },
-      push: { quantity: 3 }
-    }
+    modes: { grab: { distance: 200, links: { opacity: 0.22, color: '#00d4ff' } }, push: { quantity: 3 } }
   },
   detectRetina: true
 });
-
-/* PARTICLES — secondary layer (stars / triangles) */
 tsParticles.load("particles2", {
-  fullScreen: false,
-  background: { color: 'transparent' },
-  fpsLimit: 40,
+  fullScreen: false, background: { color: 'transparent' }, fpsLimit: 40,
   particles: {
     number: { value: 55, density: { enable: true, area: 1200 } },
-    color: { value: ['#c084fc', '#4f7cff', '#00d4ff'] },
-    shape: { type: ['triangle', 'circle'] },
+    color: { value: ['#c084fc','#4f7cff','#00d4ff'] }, shape: { type: ['triangle','circle'] },
     opacity: { value: { min: 0.04, max: 0.18 }, animation: { enable: true, speed: 0.4, minimumValue: 0.02 } },
     size: { value: { min: 2, max: 5 } },
     rotate: { value: { min: 0, max: 360 }, animation: { enable: true, speed: 3, sync: false } },
@@ -1130,8 +860,8 @@ tsParticles.load("particles2", {
   detectRetina: true
 });
 
-/* TYPING */
-const typingPhrases = ['Graphic Design', 'Human Resource Management', 'Web Creation', 'Digital Arts'];
+/* ── TYPING ── */
+const typingPhrases = ['Graphic Design','Human Resource Management','Web Creation','Digital Arts'];
 let phraseIdx = 0, charIdx = 0, isDeleting = false;
 const typingEl = document.getElementById('typing-text');
 function typeLoop() {
@@ -1148,14 +878,14 @@ function typeLoop() {
 }
 setTimeout(typeLoop, 1500);
 
-/* NAV */
+/* ── NAV ── */
 const navLinks = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('section[id]');
+const sections  = document.querySelectorAll('section[id]');
 function updateActiveNav() {
   const scrollY = window.scrollY + 120;
   sections.forEach(sec => {
-    const top = sec.offsetTop, height = sec.offsetHeight, id = sec.getAttribute('id');
-    if (scrollY >= top && scrollY < top + height) {
+    const id = sec.getAttribute('id');
+    if (scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight) {
       navLinks.forEach(l => l.classList.remove('active'));
       const active = document.querySelector(`.nav-link[data-section="${id}"]`);
       if (active) active.classList.add('active');
@@ -1164,61 +894,62 @@ function updateActiveNav() {
 }
 window.addEventListener('scroll', updateActiveNav);
 
-/* HAMBURGER */
-const hamburger = document.getElementById('hamburger');
+/* ── HAMBURGER ── */
+const hamburger  = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 let menuOpen = false;
 hamburger.addEventListener('click', () => {
   menuOpen = !menuOpen; mobileMenu.classList.toggle('open', menuOpen);
   const h1 = document.getElementById('ham1'), h2 = document.getElementById('ham2'), h3 = document.getElementById('ham3');
   if (menuOpen) {
-    h1.style.transform = 'rotate(45deg) translate(4px, 4px)'; h2.style.opacity = '0';
-    h3.style.transform = 'rotate(-45deg) translate(4px, -4px)'; h3.style.width = '20px'; h3.style.marginLeft = '0';
-  } else { h1.style.transform = ''; h2.style.opacity = '1'; h3.style.transform = ''; h3.style.width = ''; h3.style.marginLeft = ''; }
+    h1.style.transform = 'rotate(45deg) translate(4px,4px)'; h2.style.opacity = '0';
+    h3.style.transform = 'rotate(-45deg) translate(4px,-4px)'; h3.style.width = '20px'; h3.style.marginLeft = '0';
+  } else { h1.style.transform=''; h2.style.opacity='1'; h3.style.transform=''; h3.style.width=''; h3.style.marginLeft=''; }
 });
 function closeMobile() {
   menuOpen = false; mobileMenu.classList.remove('open');
-  document.getElementById('ham1').style.transform = ''; document.getElementById('ham2').style.opacity = '1';
-  const h3 = document.getElementById('ham3'); h3.style.transform = ''; h3.style.width = ''; h3.style.marginLeft = '';
+  document.getElementById('ham1').style.transform=''; document.getElementById('ham2').style.opacity='1';
+  const h3 = document.getElementById('ham3'); h3.style.transform=''; h3.style.width=''; h3.style.marginLeft='';
 }
 
-/* SCROLL TOP */
+/* ── SCROLL TOP ── */
 const scrollTopBtn = document.getElementById('scrollTop');
 window.addEventListener('scroll', () => { scrollTopBtn.classList.toggle('visible', window.scrollY > 600); });
 scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-/* DOWNLOAD CV */
+/* ── DOWNLOAD CV ── */
 document.getElementById('downloadCV').addEventListener('click', (e) => {
   e.preventDefault();
-  const cvText = `KAVISHKA MADHUSHAN\n==================\nLocation: Meegoda, Sri Lanka\nPhone: +94 75 521 0975\nEmail: mkavishka778@gmail.com\n\nPROFILE\n-------\nA motivated and detail-oriented individual with practical experience in graphic design, human resource management, and animal clinic support work.\n\nSKILLS\n------\n- Graphic Design\n- Creating Web Pages\n- Drawing & Digital Arts\n- Team Work\n- Good Communication\n- Time Management\n- HRM Knowledge\n- Digital Content Creation\n- AI & Technology Learning\n\nEDUCATION\n---------\nDiploma in Human Resource Management (Dip.HRM) - IHRM Institute, 2024\nG.C.E Advanced Level - 2025 (1B, 2C)\nG.C.E Ordinary Level - 2025 (1A, 2B, 4C, 2S)\nSri Paraksrama Maha Vidyalaya\nHabarakada Kanishta Vidyalaya\n\nEXPERIENCE\n----------\nVeterinary Clinic Support Worker - Heal Zone Animal Clinic, 2024\nStudent Worker - IHRM Institute, 2024 (In Course)\n\nCERTIFICATIONS\n--------------\nCCHRM - Certificate in Core HRM (2023)\nDiploma in HRM (2024)\nICT with AI - Ongoing\n\nLANGUAGES\n---------\nSinhala (Native)\nEnglish (Professional)`;
-  const blob = new Blob([cvText], { type: 'text/plain' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href = url; a.download = 'KAVISHKA-MADHUSHAN_CV.pdf';
-  a.click(); URL.revokeObjectURL(url);
+  // CV file එක same folder එකේ "cv.pdf" නමින් rename කරන්න
+  const a = document.createElement('a');
+  a.href = 'cv.pdf';
+  a.download = 'Kavishka-Madhushan-CV.pdf';
+  a.target = '_blank';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 });
 
-/* CONTACT FORM */
+/* ── CONTACT FORM ── */
 document.getElementById('contactForm').addEventListener('submit', (e) => {
   e.preventDefault();
-  const name = document.getElementById('waName').value.trim();
-  const email = document.getElementById('waEmail').value.trim();
+  const name    = document.getElementById('waName').value.trim();
+  const email   = document.getElementById('waEmail').value.trim();
   const subject = document.getElementById('waSubject').value.trim();
   const message = document.getElementById('waMessage').value.trim();
   let waText = `Hi Kavishka, I'm contacting you from your portfolio website.\n\n`;
   waText += `*Name:* ${name}\n`;
   if (email) waText += `*Email:* ${email}\n`;
-  waText += `*Subject:* ${subject}\n\n`;
-  waText += `*Message:*\n${message}`;
-  const waUrl = `https://wa.me/94755210975?text=${encodeURIComponent(waText)}`;
-  window.open(waUrl, '_blank');
+  waText += `*Subject:* ${subject}\n\n*Message:*\n${message}`;
+  window.open(`https://wa.me/94755210975?text=${encodeURIComponent(waText)}`, '_blank');
   setTimeout(() => { document.getElementById('contactForm').reset(); }, 500);
 });
 
-/* RENDER SKILLS */
+/* ── RENDER SKILLS ── */
 const skillsGrid = document.getElementById('skills-grid');
 skillsData.forEach((s, i) => {
   skillsGrid.innerHTML += `
-    <div class="glass p-5 tilt-card reveal" style="transition-delay:${i * 0.05}s;">
+    <div class="glass p-5 tilt-card reveal" style="transition-delay:${i*0.05}s;">
       <div class="tilt-card-inner">
         <div class="flex items-center justify-between mb-3">
           <div class="flex items-center gap-3">
@@ -1236,75 +967,74 @@ skillsData.forEach((s, i) => {
     </div>`;
 });
 
-/* GSAP */
+/* ── GSAP ANIMATIONS ── */
 function initAnimations() {
   gsap.registerPlugin(ScrollTrigger);
   gsap.utils.toArray('.reveal').forEach(el => {
-    gsap.fromTo(el, { opacity: 0, y: 40 }, {
-      opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+    gsap.fromTo(el, { opacity:0, y:40 }, {
+      opacity:1, y:0, duration:0.8, ease:'power3.out',
+      scrollTrigger: { trigger:el, start:'top 88%', once:true }
     });
   });
   gsap.utils.toArray('.reveal-scale').forEach(el => {
-    gsap.fromTo(el, { opacity: 0, scale: 0.9 }, {
-      opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+    gsap.fromTo(el, { opacity:0, scale:0.9 }, {
+      opacity:1, scale:1, duration:0.8, ease:'power3.out',
+      scrollTrigger: { trigger:el, start:'top 88%', once:true }
     });
   });
   gsap.utils.toArray('.skill-bar-fill').forEach(bar => {
     const w = bar.getAttribute('data-width');
-    ScrollTrigger.create({ trigger: bar, start: 'top 90%', once: true, onEnter: () => { bar.style.width = w + '%'; } });
+    ScrollTrigger.create({ trigger:bar, start:'top 90%', once:true, onEnter:() => { bar.style.width = w+'%'; } });
   });
   gsap.utils.toArray('.counter').forEach(counter => {
     const target = parseInt(counter.getAttribute('data-target'));
-    const obj = { val: 0 };
-    ScrollTrigger.create({ trigger: counter, start: 'top 90%', once: true, onEnter: () => {
-      gsap.to(obj, { val: target, duration: 1.5, ease: 'power2.out', onUpdate: () => { counter.textContent = Math.round(obj.val); } });
+    const obj = { val:0 };
+    ScrollTrigger.create({ trigger:counter, start:'top 90%', once:true, onEnter:() => {
+      gsap.to(obj, { val:target, duration:1.5, ease:'power2.out', onUpdate:() => { counter.textContent = Math.round(obj.val); } });
     }});
   });
-  gsap.to('.blob-1', { y: -80, scrollTrigger: { trigger: 'body', start: 'top top', end: 'bottom bottom', scrub: 1 } });
-  gsap.to('.blob-2', { y: 60, scrollTrigger: { trigger: 'body', start: 'top top', end: 'bottom bottom', scrub: 1.5 } });
-  gsap.to('.blob-3', { y: -40, scrollTrigger: { trigger: 'body', start: 'top top', end: 'bottom bottom', scrub: 2 } });
+  gsap.to('.blob-1', { y:-80, scrollTrigger:{ trigger:'body', start:'top top', end:'bottom bottom', scrub:1 } });
+  gsap.to('.blob-2', { y:60,  scrollTrigger:{ trigger:'body', start:'top top', end:'bottom bottom', scrub:1.5 } });
+  gsap.to('.blob-3', { y:-40, scrollTrigger:{ trigger:'body', start:'top top', end:'bottom bottom', scrub:2 } });
 }
 
-/* TILT */
+/* ── TILT ── */
 document.addEventListener('mousemove', (e) => {
   document.querySelectorAll('.tilt-card').forEach(card => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left, y = e.clientY - rect.top;
+    const inner = card.querySelector('.tilt-card-inner');
+    if (!inner) return;
     if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-      const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -5;
-      const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 5;
-      const inner = card.querySelector('.tilt-card-inner');
-      if (inner) inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      const rX = ((y - rect.height/2) / (rect.height/2)) * -5;
+      const rY = ((x - rect.width/2)  / (rect.width/2))  *  5;
+      inner.style.transform = `rotateX(${rX}deg) rotateY(${rY}deg)`;
     } else {
-      const inner = card.querySelector('.tilt-card-inner');
-      if (inner) inner.style.transform = 'rotateX(0) rotateY(0)';
+      inner.style.transform = 'rotateX(0) rotateY(0)';
     }
   });
 });
 
-/* MAGNETIC BUTTONS */
-document.querySelectorAll('.btn-glow, .btn-whatsapp').forEach(btn => {
+/* ── MAGNETIC BUTTONS ── */
+document.querySelectorAll('.btn-glow,.btn-whatsapp').forEach(btn => {
   btn.addEventListener('mousemove', (e) => {
     const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+    const x = e.clientX - rect.left - rect.width/2;
+    const y = e.clientY - rect.top  - rect.height/2;
+    btn.style.transform = `translate(${x*0.15}px,${y*0.15}px)`;
   });
   btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
 });
 
-/* NAVBAR HIDE/SHOW */
+/* ── NAVBAR HIDE/SHOW ── */
 let lastScroll = 0;
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   const current = window.scrollY;
-  if (current > lastScroll && current > 200) {
-    navbar.style.transform = 'translate(-50%, -100px)'; navbar.style.transition = 'transform 0.4s';
-  } else {
-    navbar.style.transform = 'translate(-50%, 0)'; navbar.style.transition = 'transform 0.4s';
-  }
+  navbar.style.transition = 'transform 0.4s';
+  navbar.style.transform = (current > lastScroll && current > 200)
+    ? 'translate(-50%,-100px)'
+    : 'translate(-50%,0)';
   lastScroll = current;
 });
 </script>
